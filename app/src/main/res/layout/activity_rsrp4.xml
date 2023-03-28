@@ -11,64 +11,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/Theme.TelecomDocs"
-        tools:context=".calculations.bandwidth2.BandwidthActivity2">
+        tools:context=".calculations.RSRP4.RsrpActivity4">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/Shannon_al"
+            app:layout_constraintBottom_toTopOf="@+id/RSRP_al"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Fmax:"
+                android:layout_marginEnd="4dp"
+                android:text="RSSI:"
                 android:textSize="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/bandwidth_fmax"
+                app:layout_constraintEnd_toStartOf="@+id/RSSI_dBm"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.425" />
-
+                app:layout_constraintVertical_bias="0.075" />
 
             <EditText
-                android:id="@+id/bandwidth_fmax"
+                android:id="@+id/RSSI_dBm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter maximum frequency (Hz)"
+                android:layout_marginBottom="8dp"
+                android:hint="Enter RSSI (dBm)"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/bandwidth_fmin"
+                app:layout_constraintBottom_toTopOf="@+id/N_argument"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.638"
+                app:layout_constraintHorizontal_bias="0.612"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/bandwidth_fmin"
+                android:id="@+id/N_argument"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter minimum frequency (Hz)"
+                android:hint="Enter N"
                 android:inputType="numberDecimal"
                 android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.65"
+                app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.499" />
+                app:layout_constraintVertical_bias="0.146" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Fmin:"
+                android:layout_marginEnd="32dp"
+                android:text="N:"
                 android:textSize="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/bandwidth_fmin"
+                app:layout_constraintEnd_toStartOf="@+id/N_argument"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.499" />
+                app:layout_constraintVertical_bias="0.144" />
 
             <Button
                 android:id="@+id/run"
@@ -77,10 +79,9 @@
                 android:text="Calculate"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bandwidth_fmin"
-                app:layout_constraintVertical_bias="0.20" />
+                app:layout_constraintTop_toBottomOf="@+id/N_argument"
+                app:layout_constraintVertical_bias="0.098" />
 
             <TextView
                 android:id="@+id/result"
@@ -91,36 +92,42 @@
                 android:textSize="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintHorizontal_bias="0.536"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.745" />
+                app:layout_constraintVertical_bias="0.384" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/bandwidth"
+            android:layout_marginEnd="52dp"
+
+            android:src="@drawable/rsrp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.821" />
+            app:layout_constraintVertical_bias="0.781" />
 
         <TextView
-            android:id="@+id/Shannon_al"
+            android:id="@+id/RSRP_al"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Bandwidth is defined as the difference between the highest frequency (fmax) and the lowest frequency (fmin) in a range of frequencies. In other words, bandwidth is the range of frequencies over which a signal or system operates."
+            android:text="RSRP (Reference Signal Received Power) is an indicator that represents the strength of the downlink signal in a 4G network. RSRP is calculated by averaging the received power level on the Reference Signal (RS) channels and has a value ranging from -140 dBm to -44 dBm.
+            \nRSRP is the received power of one Resource Element (RE) (as defined by 3GPP): calculated as the average power level received on all standard signals across the entire measured bandwidth.
+        \n\n\n
+        RSSI (Received Signal Strength Indicator) is a parameter that provides information on the total received power (across all signals), including noise. RSSI is measured across the entire bandwidth.
+        N is the number of Resource Blocks (RBs) when RSSI is measured, and this parameter depends on the bandwidth."
             android:textSize="16sp"
+            tools:layout_editor_absoluteY="429dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
